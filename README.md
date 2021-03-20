@@ -1,14 +1,3 @@
-# Exercise-04d-Save-and-Load
-Exercise for MSCH-C220, 15 March 2021
-
-A demonstration of this exercise is available at [https://youtu.be/WSBgQ3PBmbA](https://youtu.be/WSBgQ3PBmbA).
-
-This exercise is designed to continue our creation of a 2D Platformer, by demonstrating the wrong and the right (better?) ways to save and load data.
-
-Fork this repository. When that process has completed, make sure that the top of the repository reads [your username]/Exercise-04d-Save-and-Load. *Edit the LICENSE and replace BL-MSCH-C220-S21 with your full name.* Commit your changes.
-
-Clone the repository to a Local Path on your computer.
-
 There are two folders in this repository, each with a complete Godot project.
 
 Open Godot. Navigate to the 01-Config folder. Import the project.godot file and open the "Save and Load: Config" project.
@@ -90,12 +79,6 @@ Unix: ~/.local/share/godot/app_userdata/_application_name_/
 ```
 
 Test the game and play with the save and load functionality.
-
-Quit Godot. In GitHub desktop, add a summary message, commit your changes and push them back to GitHub. If you return to and refresh your GitHub repository page, you should now see your updated files with the time when they were changed.
-
-Now edit the README.md file. When you have finished editing, commit your changes, and then turn in the URL of the main repository page (https://github.com/[username]/Exercise-04d-Save-and-Load) on Canvas.
-
-The final state of the file should be as follows (replacing the "Created by" information with your name):
 ```
 # Exercise-04d-Save-and-Load
 Exercise for MSCH-C220, 15 March 2021
@@ -118,5 +101,4 @@ For more information about save and load in Godot, visit the Godot documentation
 None
 
 ## Created by 
-Jason Francis
-```
+Gwen Hall
