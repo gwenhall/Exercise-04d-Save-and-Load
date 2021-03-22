@@ -56,7 +56,27 @@ func restart_level():
 # ----------------------------------------------------------
 	
 func save_game():
-	pass
+	save_data["general"]["coins"] = []
+	save_data["general"]["mines"] = []
+	for c in Coins.get_children():
+		save_data["general"]["coins"].append(c.position)
+	for m in Mines.get_children():
+		save_data["general"]["mines"].append(m.position)
+	for section in save_data.keys():
+		for key in save_data[section]:
+			save_file.set_value(section, key, save_data[section][key])
+	save_file.save(SAVE_PATH)
 
 func load_game():
-	pass
+	var error = save_file.load(SAVE_PATH)
+	if error != OK:
+		print("Failed loading file")
+		return
+	
+	save_data["general"]["coins"] = []
+	save_data["general"]["mines"] = []
+	for section in save_data.keys():
+		for key in save_data[section]:
+			save_data[section][key] = save_file.get_value(section, key, null)
+	var _scene = get_tree().change_scene_to(Game)
+	call_deferred("restart_level")

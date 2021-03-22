@@ -57,7 +57,30 @@ func restart_level():
 # ----------------------------------------------------------
 	
 func save_game():
-	pass
+	save_data["general"]["coins"] = []
+	save_data["general"]["mines"] = []
+	for c in Coins.get_children():
+		save_data["general"]["coins"].append(var2str(c.position))
+	for m in Mines.get_children():
+		save_data["general"]["mines"].append(var2str(m.position))
+
+	var save_game = File.new()
+	save_game.open_encrypted_with_pass(SAVE_PATH, File.WRITE, SECRET)
+	save_game.store_string(to_json(save_data))
+	save_game.close()
 	
 func load_game():
-	pass
+	var save_game = File.new()
+	if not save_game.file_exists(SAVE_PATH):
+		return
+	save_game.open_encrypted_with_pass(SAVE_PATH, File.READ, SECRET)
+	var contents = save_game.get_as_text()
+	var result_json = JSON.parse(contents)
+	if result_json.error == OK:
+		save_data = result_json.result
+	else:
+		print("Error: ", result_json.error)
+	save_game.close()
+	
+	var _scene = get_tree().change_scene_to(Game)
+	call_deferred("restart_level")
